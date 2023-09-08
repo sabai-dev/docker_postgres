@@ -23,9 +23,8 @@ EXPOSE 5432
 USER postgres
 
 # I got this error exec: "/usr/local/bin/start.sh": permission denied
-# update file in host machin
-# chmod +x start.sh
 ADD start.sh /usr/local/bin/start.sh
+RUN chmod a+x /usr/local/bin/start.sh
 ENTRYPOINT ["/usr/local/bin/start.sh"]
 
 # Start PostgreSQL server
