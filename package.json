@@ -1,0 +1,18 @@
+{
+  "name": "docker_postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "docker build -t postgresql-ubuntu .",
+    "start": "docker run --name postgresql-u20 -d -p 5432:5432 postgresql-ubuntu ",
+    "stop": "docker stop postgresql-u20 && docker rm postgresql-u20",
+    "console": "docker exec -it postgresql-u20 /bin/bash",
+    "start-compose": "docker-compose -f docker-compose.yml up -d",
+		"stop-compose": "docker-compose down"
+  },
+  "author": "",
+  "license": "ISC"
+}
