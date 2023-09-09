@@ -18,13 +18,15 @@ ENV POSTGRES_USER postgres
 ENV POSTGRES_PASSWORD postgres
 ENV POSTGRES_DB dellstore2
 
+ADD start.sh /usr/local/bin/start.sh
+RUN chmod a+x /usr/local/bin/start.sh
+
 # Expose the PostgreSQL port
 EXPOSE 5432
 USER postgres
 
 # I got this error exec: "/usr/local/bin/start.sh": permission denied
-ADD start.sh /usr/local/bin/start.sh
-RUN chmod a+x /usr/local/bin/start.sh
+
 ENTRYPOINT ["/usr/local/bin/start.sh"]
 
 # Start PostgreSQL server
