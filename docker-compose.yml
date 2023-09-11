@@ -5,12 +5,14 @@ version: '3'
 services:
   db:
     image: postgresql-ubuntu:latest
-    container_name: postgresql-u20
+    container_name: $POSTGRES_HOSTNAME
     volumes:
       - ./config/postgresql.conf:/etc/postgresql/12/main/postgresql.conf
       - ./config/pg_hba.conf:/etc/postgresql/12/main/pg_hba.conf
     ports:
       - 5432:5432
+    env_file:
+      - env/database.env
     environment:
       - POSTGRES_DB=dellstore2
       - POSTGRES_USER=postgres
